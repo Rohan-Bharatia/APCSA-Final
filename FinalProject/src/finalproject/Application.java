@@ -3,29 +3,44 @@ package finalproject;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Application
+public class Application extends Frame
 {
-    private final Frame frame;
-    
-    public Application(String title, int with, int height)
+    public Application(String title, int width, int height)
     {
-        frame = new Frame(title);
-        frame.setSize(with, height);
-        frame.setBackground(Color.WHITE);
+        setLocation(100, 100);
+        setSize(width, height);
+        setBackground(new Color(0, 150, 0));
     }
     
     public void run()
     {
-        frame.toFront();
-        frame.setVisible(true);
+        toFront();
+        setVisible(true);
         
-        frame.addWindowListener(new WindowAdapter()
+        addWindowListener(new WindowAdapter()
         {
             @Override
             public void windowClosing(WindowEvent e)
             {
                 System.exit(0);
             }
+            
+            @Override
+            public void windowGainedFocus(WindowEvent e)
+            {
+                setEnabled(true);
+            }
+            
+            @Override
+            public void windowLostFocus(WindowEvent e)
+            {
+                setEnabled(false);
+            }
         });
+    }
+    
+    @Override
+    public void paint(Graphics g)
+    {
     }
 }
