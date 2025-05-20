@@ -13,6 +13,11 @@ public class Player
         cards = new ArrayList<>();
     }
     
+    public void addCard(Card card)
+    {
+        cards.add(card);
+    }
+    
     public ArrayList<Chip> getChips()
     {
         return this.chips;

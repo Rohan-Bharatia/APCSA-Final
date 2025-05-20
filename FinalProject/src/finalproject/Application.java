@@ -16,6 +16,8 @@ public class Application extends Frame
         
         dealer = new Dealer();
         player = new Player();
+        
+//        dealer.shuffle();
     }
     
     public void run()
