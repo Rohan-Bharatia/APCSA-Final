@@ -1,5 +1,7 @@
 package finalproject;
 
+import static finalproject.CardSuit.HEART;
+import static finalproject.CardType.TWO;
 import java.awt.*;
 
 public class Card
@@ -15,12 +17,27 @@ public class Card
         this.type = type;
     }
     
-    public void draw(Graphics gfx, int x, int y)
+    public void drawUp(Graphics gfx, int x, int y)
     {
-        gfx.setColor(Color.RED);
-        gfx.fillRoundRect(x, y, 100, 250, 10, 10);
         gfx.setColor(Color.WHITE);
-        gfx.fillRoundRect(x + 10, y + 10, 100 - 10, 250 - 10, 10, 10);
+        gfx.fillRoundRect(x, y, 100, 150, 10, 10);
+        gfx.setColor(getColor());
+        Font font = new Font("Arial", Font.PLAIN, 36);
+        gfx.setFont(font);
+        gfx.drawString(getData()[1], x + 50 - (36 / 4), y + 75 + (36 / 4));
+        font = new Font("Arial", Font.PLAIN, 24);
+        gfx.setFont(font);
+        gfx.drawString(getData()[0], x + 12, y + 24 + 6);
+        gfx.drawString(getData()[0], x + 100 - 24, y + 150 - 12);
+    }
+    
+    public void drawDown(Graphics gfx, int x, int y)
+    {
+        int t = 3;
+        gfx.setColor(Color.WHITE);
+        gfx.fillRoundRect(x, y, 100, 150, 10, 10);
+        gfx.setColor(Color.BLUE);
+        gfx.fillRoundRect(x + t, y + t, 100 - (t * 2), 150 - (t * 2), t, t);
     }
     
     public CardSuit getSuit()
@@ -83,6 +100,58 @@ public class Card
             case 11 -> { return CardType.KING; }
             case 12 -> { return CardType.ACE; }
             default -> { throw new IndexOutOfBoundsException("This card type does not exist (" + t + ")"); }
+        }
+    }
+    
+    private String[] getData() // type, suit
+    {
+        String st;
+        switch (suit)
+        {
+            case HEART   -> { st = "♥"; }
+            case DIAMOND -> { st = "♦"; }
+            case SPADE   -> { st = "♠"; }
+            case CLUB    -> { st = "♣"; }
+            default      -> { st = ""; }
+        }
+        
+        switch (type)
+        {
+            case TWO   -> { return new String[]{ "2",  st }; }
+            case THREE -> { return new String[]{ "3",  st }; }
+            case FOUR  -> { return new String[]{ "4",  st }; }
+            case FIVE  -> { return new String[]{ "5",  st }; }
+            case SIX   -> { return new String[]{ "6",  st }; }
+            case SEVEN -> { return new String[]{ "7",  st }; }
+            case EIGHT -> { return new String[]{ "8",  st }; }
+            case NINE  -> { return new String[]{ "9",  st }; }
+            case TEN   -> { return new String[]{ "10", st }; }
+            case JACK  -> { return new String[]{ "J",  st }; }
+            case QUEEN -> { return new String[]{ "Q",  st }; }
+            case KING  -> { return new String[]{ "K",  st }; }
+            case ACE   -> { return new String[]{ "A",  st }; }
+            default    -> { return new String[]{ "",   st }; }
+        }
+    }
+    
+    public int getValue()
+    {
+        switch (type)
+        {
+            case TWO   -> { return 2; }
+            case THREE -> { return 3; }
+            case FOUR  -> { return 4; }
+            case FIVE  -> { return 5; }
+            case SIX   -> { return 6; }
+            case SEVEN -> { return 7; }
+            case EIGHT -> { return 8; }
+            case NINE  -> { return 9; }
+            case TEN   -> { return 10; }
+            case JACK  -> { return 10; }
+            case QUEEN -> { return 10; }
+            case KING  -> { return 10; }
+            case ACE   -> { return 11; }
+            default    -> { return 0; }
         }
     }
 }

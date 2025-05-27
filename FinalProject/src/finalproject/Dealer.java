@@ -9,7 +9,7 @@ public class Dealer
     public Dealer()
     {
         cards = new ArrayList<>();
-//        
+
         for (int t = 0; t < 13; ++t)
             for (int c = 0; c < 2; ++c)
                 if (c == 0)
@@ -29,7 +29,7 @@ public class Dealer
             int r = (int)(Math.random() * 52);
             if (list.get(r) == (null))
                 list.set(r, card);
-        }
+    }
     }
     
     public void GiveCard(Player player)
