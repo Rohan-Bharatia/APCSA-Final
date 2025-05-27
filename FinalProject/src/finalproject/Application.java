@@ -10,6 +10,7 @@ public class Application extends Frame
     
     public Application(String title, int width, int height)
     {
+        setTitle(title);
         setLocation(100, 100);
         setSize(width, height);
         setBackground(new Color(0, 150, 0));
@@ -17,7 +18,7 @@ public class Application extends Frame
         dealer = new Dealer();
         player = new Player();
         
-       dealer.shuffle();
+        dealer.shuffle();
     }
     
     public void run()
@@ -62,12 +63,12 @@ public class Application extends Frame
     }
     
     @Override
-    public void paint(Graphics g)
+    public void paint(Graphics gfx)
     {
         for (int i = 0; i < dealer.getCards().size(); ++i)
         {
-            dealer.getCards().get(i).drawDown(g, 100 * i, 100);
-            dealer.getCards().get(i).drawUp(g, 100 * i, 250);
+            dealer.getCards().get(i).drawDown(gfx, 100 * i, 100);
+            dealer.getCards().get(i).drawUp(gfx, 100 * i, 250);
         }
     }
     
