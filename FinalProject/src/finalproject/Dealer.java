@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Dealer
 {
-    private final ArrayList<Card> cards;
+    private ArrayList<Card> cards;
     
     public Dealer()
     {
@@ -30,6 +30,8 @@ public class Dealer
             list.add(cards.get(index));
             cards.remove(index);
         }
+        
+        cards = list;
     }
     
     public void GiveCard(Player player)
