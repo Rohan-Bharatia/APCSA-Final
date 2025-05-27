@@ -1,7 +1,6 @@
 package finalproject;
 
 import java.awt.Color;
-import java.awt.Graphics;
 
 public class WhiteChip extends Chip
 {
@@ -15,12 +14,5 @@ public class WhiteChip extends Chip
     public Color getColor()
     {
         return Color.WHITE;
-    }
-    
-    @Override
-    public void draw(Graphics gfx, int x, int y)
-    {
-        gfx.setColor(getColor());
-        gfx.fillOval(x, y, 20, 20);
     }
 }

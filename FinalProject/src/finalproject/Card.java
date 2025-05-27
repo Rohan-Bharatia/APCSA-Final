@@ -20,13 +20,14 @@ public class Card
         gfx.setColor(Color.WHITE);
         gfx.fillRoundRect(x, y, 100, 150, 10, 10);
         gfx.setColor(getColor());
-        Font font = new Font("Arial", Font.PLAIN, 36);
-        gfx.setFont(font);
+        gfx.setFont(new Font("Arial", Font.PLAIN, 36));
         gfx.drawString(getData()[1], x + 50 - (36 / 4), y + 75 + (36 / 4));
-        font = new Font("Arial", Font.PLAIN, 24);
-        gfx.setFont(font);
+        gfx.setFont(new Font("Arial", Font.PLAIN, 24));
         gfx.drawString(getData()[0], x + 12, y + 24 + 6);
-        gfx.drawString(getData()[0], x + 100 - 24, y + 150 - (12 + (getValue() > 10 ? 6 : 0)));
+        if (getValue() != 10)
+            gfx.drawString(getData()[0], x + 100 - 24, y + 150 - 12);
+        else
+            gfx.drawString(getData()[0], x + 100 - 36, y + 150 - 12);
     }
     
     public void drawDown(Graphics gfx, int x, int y)
