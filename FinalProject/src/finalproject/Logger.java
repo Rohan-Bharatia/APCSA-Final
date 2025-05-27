@@ -19,13 +19,13 @@ public class Logger
         String col;
         switch (level)
         {
-            case TRACE -> col = "\033[37m";
-            case DEBUG -> col = "\033[34m";
-            case INFO  -> col = "\033[32m";
-            case WARN  -> col = "\033[33m";
-            case ERROR -> col = "\033[31m";
-            case CRIT  -> col = "\033[35m";
-            default    -> col = "\033[0m";
+            case TRACE -> { col = "\033[37m"; }
+            case DEBUG -> { col = "\033[34m"; }
+            case INFO  -> { col = "\033[32m"; }
+            case WARN  -> { col = "\033[33m"; }
+            case ERROR -> { col = "\033[31m"; }
+            case CRIT  -> { col = "\033[35m"; }
+            default    -> { col = "\033[0m";  }
         }
         
         System.out.println(col + "[" + LocalDateTime.now() + "][" + level.name() + "]:\033[0m " + message);

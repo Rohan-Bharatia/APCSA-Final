@@ -1,7 +1,5 @@
 package finalproject;
 
-import static finalproject.CardSuit.HEART;
-import static finalproject.CardType.TWO;
 import java.awt.*;
 
 public class Card
@@ -28,7 +26,7 @@ public class Card
         font = new Font("Arial", Font.PLAIN, 24);
         gfx.setFont(font);
         gfx.drawString(getData()[0], x + 12, y + 24 + 6);
-        gfx.drawString(getData()[0], x + 100 - 24, y + 150 - 12);
+        gfx.drawString(getData()[0], x + 100 - 24, y + 150 - (12 + (getValue() > 10 ? 6 : 0)));
     }
     
     public void drawDown(Graphics gfx, int x, int y)
