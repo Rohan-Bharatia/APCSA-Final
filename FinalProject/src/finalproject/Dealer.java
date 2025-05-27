@@ -24,11 +24,10 @@ public class Dealer
     {
         ArrayList<Card> list = new ArrayList<>();
         
-        for (Card card : cards)
-        {
-            int r = (int)(Math.random() * 52);
-            if (list.get(r) == (null))
-                list.set(r, card);
+        for (int i = 0; i < 52; i++){
+            int index = (int)(Math.random() * (52 - i));
+            list.add(cards.get(index));
+            cards.remove(index);
         }
     }
     
@@ -41,4 +40,5 @@ public class Dealer
     {
         return this.cards;
     }
+
 }

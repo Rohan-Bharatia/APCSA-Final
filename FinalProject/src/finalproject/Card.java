@@ -85,4 +85,8 @@ public class Card
             default -> { throw new IndexOutOfBoundsException("This card type does not exist (" + t + ")"); }
         }
     }
+        public String toString()
+    {
+        return type + " OF " + suit + "S"; 
+    }
 }
