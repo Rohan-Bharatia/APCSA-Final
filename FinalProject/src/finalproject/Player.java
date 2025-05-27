@@ -18,6 +18,14 @@ public class Player
         cards.add(card);
     }
     
+    public int getCardSum()
+    {
+        int sum = 0;
+        for (Card card : cards)
+            sum += card.getValue();
+        return sum;
+    }
+    
     public ArrayList<Chip> getChips()
     {
         return this.chips;
