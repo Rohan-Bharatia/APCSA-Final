@@ -63,7 +63,13 @@ public class Application extends Frame
     
     @Override
     public void paint(Graphics g)
-    {}
+    {
+        for (int i = 0; i < dealer.getCards().size(); ++i)
+        {
+            dealer.getCards().get(i).drawDown(g, 100 * i, 100);
+            dealer.getCards().get(i).drawUp(g, 100 * i, 250);
+        }
+    }
     
     public Dealer getDealer()
     {
