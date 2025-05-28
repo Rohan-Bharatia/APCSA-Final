@@ -7,12 +7,14 @@ public class Player
     private final ArrayList<Chip> chips;
     private final ArrayList<Card> hand;
     private int bet;
+    private int budget;
     
     public Player()
     {
-        chips = new ArrayList<>();
-        hand  = new ArrayList<>();
-        bet   = 0;
+        chips  = new ArrayList<>();
+        hand   = new ArrayList<>();
+        bet    = 0;
+        budget = 1000;
     }
     
     public void addCard(Card card)
@@ -22,7 +24,12 @@ public class Player
 
     public void addChip(Chip chip)
     {
-        chips.add(chip);
+        if (budget >= chip.getValue()) // Only allow bet if enough budget
+        {
+            chips.add(chip);
+            bet += chip.getValue();
+            budget -= chip.getValue();
+        }
     }
     
     public int getCardSum()
@@ -66,5 +73,18 @@ public class Player
     {
         chips.clear();
         this.bet = 0;
+    }
+
+    public void reset()
+    {
+        hand.clear();
+        chips.clear();
+    }
+
+    public void fixBet(int value)
+    {
+        this.bet    += value;
+        this.budget += this.bet;
+        chips.clear();
     }
 }

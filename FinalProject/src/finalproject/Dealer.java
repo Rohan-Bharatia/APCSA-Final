@@ -6,11 +6,13 @@ public class Dealer
 {
     private ArrayList<Card> table;
     private ArrayList<Card> hand;
+    private int bet;
     
     public Dealer()
     {
         table = new ArrayList<>();
         hand  = new ArrayList<>();
+        bet   = 0;
 
         for (int d = 0; d < 6; ++d) // 6 decks
             for (int t = 0; t < 13; ++t) // 13 types
@@ -70,6 +72,11 @@ public class Dealer
         player.addCard(table.getLast());
         table.remove(table.size() - 1);
     }
+
+    public void addChip(Chip chip)
+    {
+        bet += chip.getValue();
+    }
     
     public ArrayList<Card> getTable()
     {
@@ -79,5 +86,25 @@ public class Dealer
     public ArrayList<Card> getHand()
     {
         return this.hand;
+    }
+
+    public int getBet()
+    {
+        return this.bet;
+    }
+
+    public void resetBet()
+    {
+        this.bet = 0;
+    }
+
+    public void reset()
+    {
+        hand.clear();
+    }
+
+    public void fixBet(int value)
+    {
+        this.bet += value;
     }
 }
