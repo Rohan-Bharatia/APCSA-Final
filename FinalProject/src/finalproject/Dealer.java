@@ -105,6 +105,6 @@ public class Dealer
 
     public void fixBet(int value)
     {
-        this.bet += value * 2;
+        this.bet += value;
     }
 }

@@ -26,7 +26,7 @@ public class Application extends Frame
         player = new Player();
         state  = GameState.PLAYER_TURN;
 
-        chipOptions = new Chip[4];
+        chipOptions    = new Chip[4];
         chipOptions[0] = new WhiteChip();
         chipOptions[1] = new RedChip();
         chipOptions[2] = new BlueChip();
@@ -98,7 +98,7 @@ public class Application extends Frame
                                     dealer.GiveCard();
                                     repaint();
                                     Thread.sleep(850);
-
+                                    
                                     while (dealer.getCardSum() <= player.getCardSum())
                                     {
                                         dealer.GiveCard();
@@ -110,7 +110,7 @@ public class Application extends Frame
                                 {
                                     Thread.currentThread().interrupt();
                                 }
-
+                                
                                 state = GameState.RESULT;
                                 repaint();
                             }).start();
@@ -149,6 +149,7 @@ public class Application extends Frame
     @Override
     public void paint(Graphics gfx)
     {
+        // Draw key bindings
         gfx.setColor(new Color(150, 75, 0));
         gfx.fillRoundRect(800, 500, getWidth() - 810, getHeight() - 510, 20, 20);
         gfx.setColor(Color.WHITE);
@@ -201,7 +202,7 @@ public class Application extends Frame
             else if (playerSum > dealerSum)
             {
                 result = "Player Wins!";
-                player.fixBet(dealer.getBet());
+                player.fixBet(dealer.getBet() * 2);
                 dealer.resetBet();
             }
             else if (playerSum < dealerSum)

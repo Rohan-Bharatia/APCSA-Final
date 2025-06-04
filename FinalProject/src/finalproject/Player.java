@@ -83,7 +83,7 @@ public class Player
 
     public void fixBet(int value)
     {
-        this.bet    += value * 2;
+        this.bet    += value;
         this.budget += this.bet;
         chips.clear();
     }

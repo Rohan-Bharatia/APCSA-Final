@@ -111,7 +111,7 @@ public class Card
             case DIAMOND -> { st = "♦"; }
             case SPADE   -> { st = "♠"; }
             case CLUB    -> { st = "♣"; }
-            default      -> { st = ""; }
+            default      -> { throw new IndexOutOfBoundsException("This card suit does not exist (" + suit + ")"); }
         }
         
         switch (type)
@@ -129,7 +129,7 @@ public class Card
             case QUEEN -> { return new String[]{ "Q",  st }; }
             case KING  -> { return new String[]{ "K",  st }; }
             case ACE   -> { return new String[]{ "A",  st }; }
-            default    -> { return new String[]{ "",   st }; }
+            default    -> { throw new IndexOutOfBoundsException("This card type does not exist (" + type + ")"); }
         }
     }
     
@@ -150,7 +150,7 @@ public class Card
             case QUEEN -> { return 10; }
             case KING  -> { return 10; }
             case ACE   -> { return 11; }
-            default    -> { return 0; }
+            default    -> { return 0; } // Cannot put an unreachable exeption here, but a default is required in case type doesn't exist
         }
 
     }
